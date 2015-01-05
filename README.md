@@ -1,6 +1,8 @@
 # LaTeX Paper Template
 This template provides a basic environment to produce academic papers or similar kinds of texts.
 
+A preview of the generated `.pdf` is available [here](http://andinfinity.de/show/latex-template/article.pdf).
+
 ## Usage
 The template was developed under OS X. Therefore you might have to edit the `Makefile` slightly to fit the commands to your LaTeX distribution or operating system.
 
