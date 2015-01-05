@@ -1,0 +1,216 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LaTeX Paper Template
+%
+% Original author:
+% Christian Schulze (http://andinfinity.de)
+%
+% License: MIT
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper]{article}
+
+% input encoding and general language setup
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[babel]{csquotes} % fancy quotes
+
+
+% fonts
+\usepackage[T1]{fontenc}
+\usepackage{mathpazo} % palatino for text
+\usepackage{eulervm} % euler font for the math environment
+\renewcommand{\ttdefault}{lmtt} %tt
+
+
+% source management with biblatex
+\usepackage[firstinits=true,urldate=comp,dateabbrev=false,
+backend=bibtex,style=verbose-ibid,citetracker]{biblatex}
+
+% authors in small caps
+\renewcommand*{\mkbibnamelast}[1]{\textsc{#1}}
+\addbibresource{sources.bib}
+
+
+% references inside the pdf
+\usepackage{hyperref}
+
+
+% typography
+\linespread{1.05} % Line spacing - Palatino needs more space between lines
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+
+
+% chechmarks and crosses
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+
+% source code listings
+\usepackage{listings}
+
+
+% layout customizations
+
+% IEEE like abstract environment
+\providecommand{\theabstract}[1]
+  {\par\addvspace{\baselineskip}\noindent\textbf{\textit{Abstract---}} #1}
+  {\par\addvspace{\baselineskip}}
+
+% IEEE like keyword environment (see 
+% http://tex.stackexchange.com/questions/137291/latex-error-environment-keywords-undefined)
+\providecommand{\keywords}[1]
+  {\par\addvspace{\baselineskip}\noindent\textbf{\textit{Index terms---}} #1}
+  {\par\addvspace{\baselineskip}}
+
+\urlstyle{rm} % URL style reset to regular
+
+\usepackage{titlesec} % allows customization of titles
+\renewcommand\thesection{\Roman{section}} % roman numerals for sections
+\renewcommand\thesubsection{\Roman{subsection}} % roman numerals for subsections
+
+% change the appereance of the (sub-) section titles
+\titleformat{\section}[block]{\large\scshape\centering}{\thesection.}{1em}{} 
+\titleformat{\subsection}[block]{\large}{\thesubsection.}{1em}{}
+
+\usepackage{multicol}
+
+\title{Scaffold your Awesome Paper with this Template}
+
+\author{
+  \large
+  \textsc{Christian Schulze} \\
+  % institution like company or university
+  \normalsize Technische Hochschule Mittelhessen - University of Applied 
+  Sciences Gießen \\
+   % email address (pleas change this or at least remove my mail address)
+  \normalsize
+    \href{mailto:christian.schulze@mni.thm.de}{christian.schulze@mni.thm.de}
+}
+\date{January 2015}
+
+\begin{document}
+
+% title
+\maketitle
+
+% abstract
+\begin{theabstract}
+  Nulla vitae elit libero, a pharetra augue. Cum sociis natoque penatibus et 
+  magnis dis parturient montes, nascetur ridiculus mus. Vivamus sagittis lacus 
+  vel augue laoreet rutrum faucibus dolor auctor. Donec sed odio dui. Nulla 
+  vitae elit libero, a pharetra augue.
+\end{theabstract}
+
+% keywords
+\begin{keywords}
+	\LaTeX, Template, Paper, Academic, THM
+\end{keywords}
+
+% from here on the two column layout starts throughout the paper
+\begin{multicols}{2}
+
+% first section (most likely an introduction)
+\section{Introduction}
+Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida at 
+eget metus. Nullam quis risus eget urna mollis ornare vel eu leo. Integer 
+posuere erat a ante venenatis dapibus posuere velit aliquet.
+
+Curabitur blandit tempus porttitor. Curabitur blandit tempus porttitor. Cum 
+sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus 
+mus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur 
+ridiculus mus.\footcite{tab-atkins:css-nesting}
+
+
+\section{Specific text elements}
+For {\em programming languages} or technical terms one could use 
+\texttt{\\texttt} for example.
+
+\section{Source code listings or tables}
+You might want to list source code or show a table. This looks just like 
+figure~\ref{fig:fig1}.
+\end{multicols}
+
+\begin{figure}[hct!]
+  \caption{Full width table with checkmarks and stuff}
+  \begin{center}
+    \begin{tabular}{ | l | l | l | p{5cm} |}
+      \hline
+       & Less & SCSS/Sass & Stylus \\ \hline
+      Maps/Hashes & \xmark & \cmark\footnotemark  & \cmark\footnotemark \\ \hline
+      Listen & \xmark & \cmark\footnotemark  & \cmark\footnotemark \\ \hline
+    \end{tabular}
+  \end{center}
+
+  \label{fig:fig1}
+\end{figure}
+
+% table is not a footnote-save environment so we have to do this by hand *after*
+% the figure and/or table
+\addtocounter{footnote}{-4}
+\stepcounter{footnote}\footnotetext{\cite{sass:datastructures}}
+\stepcounter{footnote}\footnotetext{\cite{stylus:hashes}}
+\stepcounter{footnote}\footnotetext{\cite{sass:datastructures}}
+\stepcounter{footnote}\footnotetext{\cite{stylus:ops}.}
+
+\begin{multicols}{2}
+Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut 
+fermentum massa justo sit amet risus. Maecenas faucibus mollis interdum. 
+Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, 
+vel scelerisque nisl consectetur et. Vestibulum id ligula porta felis euismod 
+semper. Donec ullamcorper nulla non metus auctor fringilla.
+
+\subsection{Sourcecode}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas faucibus 
+mollis interdum. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem 
+ipsum dolor sit amet, consectetur adipiscing elit. Aenean lacinia bibendum nulla 
+sed consectetur. Donec sed odio dui. As shown in 
+\hyperref[mixin]{Example 1}\footcite[Taken from: ][]{sass:mixins}.
+
+% note here that you should change the label to the source code listing to be 
+% able to refer to it later with \hyperref
+\begin{lstlisting}[caption={Example 1\label{mixin}}]
+@mixin large-text {
+  font: {
+    family: Arial;
+    size: 20px;
+    weight: bold;
+  }
+  color: #ff0000;
+}
+
+.page-title {
+  @include large-text;
+  padding: 4px;
+  margin-top: 10px;
+}
+\end{lstlisting}
+
+\section{Sociis natoque}
+Cras mattis consectetur purus sit amet fermentum. Donec ullamcorper nulla non 
+metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Vivamus 
+sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis 
+consectetur purus sit amet fermentum.
+
+Nullam quis risus eget urna mollis ornare vel eu leo. Duis mollis, est non 
+commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. 
+Aenean lacinia bibendum nulla sed consectetur. Donec sed odio dui.
+
+Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus 
+mus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed 
+posuere consectetur est at lobortis. Morbi leo risus, porta ac consectetur ac, 
+vestibulum at eros.
+
+Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh 
+ultricies vehicula ut id elit. Vivamus sagittis lacus vel augue laoreet rutrum 
+faucibus dolor auctor. Fusce dapibus, tellus ac cursus commodo, tortor mauris 
+condimentum nibh, ut fermentum massa justo sit amet risus. Curabitur blandit 
+tempus porttitor. Sed posuere consectetur est at lobortis. Morbi leo risus, 
+porta ac consectetur ac, vestibulum at eros.
+
+\end{multicols}
+
+\printbibliography
+
+\end{document}
